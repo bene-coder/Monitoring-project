@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 .pytest_cache/
 .git/
+.env
+scripts/backups/*.sql
+scripts/reports/*.txt

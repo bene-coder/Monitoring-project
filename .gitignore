@@ -3,3 +3,5 @@ app/__pycache__/
 *.pyc
 .pytest_cache/
 .env
+scripts/backups/*.sql
+scripts/reports/*.txt
