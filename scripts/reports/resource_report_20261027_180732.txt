@@ -1,8 +1,0 @@
-==================================================
- DOCKER CONTAINER RESOURCE USAGE REPORT
- Timestamp: Tue, Oct 27, 2026  6:07:33 PM
-==================================================
-CONTAINER ID   NAME                              CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O   PIDS
-eedd3641f66c   devops-monitoring-project-web-1   0.02%     54.16MiB / 7.698GiB   0.69%     10.8kB / 8.63kB   0B / 0B     1
-51c9a7107b9a   devops-monitoring-project-db-1    4.75%     23.38MiB / 7.698GiB   0.30%     6.24kB / 3.99kB   0B / 0B     7
-==================================================

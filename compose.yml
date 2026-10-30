@@ -23,9 +23,9 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - POSTGRES_USER=${POSTGRES_USER:-postgres}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-secretpassword}
-      - POSTGRES_DB=${POSTGRES_DB:-devops_db}
+      - DB_USER=${POSTGRES_USER}
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_NAME=${POSTGRES_DB}
       - DB_HOST=db
       - DB_PORT=5432
     depends_on:
