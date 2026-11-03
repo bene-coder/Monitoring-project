@@ -9,8 +9,8 @@ if [ -f .env ]; then
     set +a
 fi
 
-DB_USER="${POSTGRES_USER:-postgres}"
-DB_NAME="${POSTGRES_DB:-devops_db}"
+DB_USER="${POSTGRES_USER}"
+DB_NAME="${POSTGRES_DB}"
 BACKUP_DIR="backups"
 MAX_BACKUPS="${MAX_BACKUPS:-5}"
 

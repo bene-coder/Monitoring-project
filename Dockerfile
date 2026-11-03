@@ -13,11 +13,15 @@ RUN groupadd -g 10001 appgroup && \
 # Set the working directory inside the container
 WORKDIR /app
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends curl && \
+    rm -rf /var/lib/apt/lists/*
+
 # Copy requirements.txt first to optimize Docker layer caching
 COPY app/requirements.txt .
 
 # Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt 
 
 # Copy application files and grant ownership to the non-root user
 COPY --chown=appuser:appgroup . .
