@@ -12,7 +12,7 @@ echo "-> Pinging health endpoint at '$URL' (Max retries: $MAX_RETRIES)..."
 attempt=1
 while [ "$attempt" -le "$MAX_RETRIES" ]; do
     # Capture HTTP status code while saving body to a temp file, with strict variable quoting
-    HTTP_STATUS=$(curl -s -o "$TEMP_FILE" -w "%{http_code}" "$URL" || echo "000" --max-time 3)
+    HTTP_STATUS=$(curl -s -o "$TEMP_FILE" -w "%{http_code}" --max-time 3 "$URL" || echo "000")
 
     if [ "$HTTP_STATUS" -eq 200 ]; then
         echo "[SUCCESS] Health check passed! HTTP Status: 200"
