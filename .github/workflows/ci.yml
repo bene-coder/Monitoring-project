@@ -14,12 +14,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7.0.1
 
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
-          python-version: '3.11'
-      - run: ls -la
-      - run: python3 --version
+          python-version: '3.13'
+      - run: pip install -r requirements.txt
+      - run: pytest
           
