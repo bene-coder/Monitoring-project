@@ -5,3 +5,4 @@ app/__pycache__/
 .env
 backups/*.sql.gz
 scripts/reports/*.txt
+getenv-test.py
