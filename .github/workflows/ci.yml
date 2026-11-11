@@ -10,8 +10,27 @@ on:
       - main  
 
 jobs:
+  lint: 
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code 
+      uses: actions/checkout@v7
+
+    - name: Set up Python
+      uses: actions/setup-python@v7
+      with:
+        python-version: '3.13'
+    
+    - name: Install Dependencies
+      run: pip install ruff
+
+    - name: Run Linter
+      run: ruff check . --exit-zero
+      
   build:
     runs-on: ubuntu-latest
+    needs: lint
 
     steps:
       - uses: actions/checkout@v7.0.1
