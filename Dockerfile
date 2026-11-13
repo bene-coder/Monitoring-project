@@ -4,7 +4,6 @@ FROM python:3.13-slim
 # Set environment optimizations
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PATH="/home/appuser/.local/bin:$PATH"
 
 # Create a dedicated non-root system user and group
 RUN groupadd -g 10001 appgroup && \
@@ -14,7 +13,7 @@ RUN groupadd -g 10001 appgroup && \
 WORKDIR /app
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends curl && \
+    apt-get install -y --no-install-recommends curl=8.23.0-1ubuntu2.1 && \
     rm -rf /var/lib/apt/lists/*
 
 # Copy requirements.txt first to optimize Docker layer caching
@@ -27,7 +26,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY --chown=appuser:appgroup . .
 
 # Switch to the secure non-root user
-USER appuser
+USER 10001
 
 # Copy the only necessary files of your project into the container 
 COPY app/ .
