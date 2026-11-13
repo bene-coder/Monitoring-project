@@ -1,5 +1,6 @@
 import os
 import sys
+
 import pytest
 
 app_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../app'))
@@ -7,6 +8,7 @@ sys.path.insert(0, app_dir)
 
 os.environ["DATABASE_URL"] = "sqlite:///:memory:"
 from app import app
+
 
 @pytest.fixture
 def client():
