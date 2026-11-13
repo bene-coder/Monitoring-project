@@ -1,8 +1,10 @@
 .venv/
 __pycache__/
+./app/__pycache__
 *.pyc
 .pytest_cache/
 .git/
+./app/.git/
 .env
 scripts/backups/*.sql
 scripts/reports/*.txt
