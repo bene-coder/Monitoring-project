@@ -1,6 +1,10 @@
+import logging
 import os
+
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
+
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
@@ -25,9 +29,8 @@ class Item(db.Model):
 with app.app_context():
     try:
         db.create_all()
-    except Exception as e:
-        print(f"Database creation failed: {e}")
-
+    except Exception:
+        logger.exception("Database creation failed")
 @app.route('/')
 def home():
     return "Welcome to Flask with PostgreSQL and Docker Compose!"
@@ -38,9 +41,9 @@ def health():
         # Check database connection
         db.session.execute(db.text('SELECT 1'))
         db_status = "connected"
-    except Exception as e:
-        db_status = f"disconnected: {str(e)}"
-        return jsonify(status="unhealthy", database=db_status), 500
+    except Exception:
+        logger.exception("Database health check failed")
+        return jsonify(status="unhealthy", database="disconnected"), 500
     
     return jsonify(status="healthy", database=db_status), 200
 
