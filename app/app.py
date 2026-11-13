@@ -31,6 +31,7 @@ with app.app_context():
         db.create_all()
     except Exception:
         logger.exception("Database creation failed")
+        raise
 @app.route('/')
 def home():
     return "Welcome to Flask with PostgreSQL and Docker Compose!"
