@@ -3,7 +3,7 @@ FROM python:3.13-slim
 
 # Set environment optimizations
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
+    PYTHONUNBUFFERED=1 
 
 # Create a dedicated non-root system user and group
 RUN groupadd -g 10001 appgroup && \
@@ -12,18 +12,11 @@ RUN groupadd -g 10001 appgroup && \
 # Set the working directory inside the container
 WORKDIR /app
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends curl=8.23.0-1ubuntu2.1 && \
-    rm -rf /var/lib/apt/lists/*
-
 # Copy requirements.txt first to optimize Docker layer caching
 COPY app/requirements.txt .
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt 
-
-# Copy application files and grant ownership to the non-root user
-COPY --chown=appuser:appgroup . .
 
 # Switch to the secure non-root user
 USER 10001
