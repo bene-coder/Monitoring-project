@@ -9,6 +9,8 @@ if [ -f .env ]; then
     set +a
 fi
 
+# .env is not committed (gitignored), so shellcheck cannot follow it
+
 DB_USER="${POSTGRES_USER}"
 DB_NAME="${POSTGRES_DB}"
 BACKUP_DIR="backups"
