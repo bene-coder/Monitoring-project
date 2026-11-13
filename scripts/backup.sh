@@ -3,8 +3,8 @@ set -euo pipefail
 
 # Load environment variables from .env if present
 if [ -f .env ]; then
-    # shellcheck source=.env
     set -a
+    # shellcheck source=/dev/null
     source .env
     set +a
 fi
