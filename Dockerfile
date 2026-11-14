@@ -3,7 +3,7 @@ FROM python:3.13-slim
 
 # Set environment optimizations
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
+    PYTHONUNBUFFERED=1 
 
 # Create a dedicated non-root system user and group
 RUN groupadd -g 10001 appgroup && \
